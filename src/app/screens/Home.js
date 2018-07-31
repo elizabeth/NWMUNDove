@@ -17,8 +17,6 @@ class Home extends Component<Props> {
             <SafeAreaView style={styles.container}>
                 <View style={[styles.container, homeStyles.container]}>
                     <Text style={homeStyles.welcome}>Welcome to my app!</Text>
-                    <Text style={homeStyles.instructions}>To get started, edit App.js</Text>
-                    <Text style={homeStyles.instructions}>{instructions}</Text>
                 </View>
             </SafeAreaView>
         );
@@ -35,12 +33,7 @@ const homeStyles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+    }
 });
   
 export default Home;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, View, StyleSheet} from 'react-native';
 import { SafeAreaView } from 'react-navigation'
 import { ListItem } from 'react-native-elements';
+import styles from '../Style'
 
 const list = [
     {
@@ -15,34 +16,26 @@ const list = [
 class Settings extends Component {
     keyExtractor = (item, index) => item.title
 
+    goToSetting = (screen) => {
+        this.props.navigation.navigate(screen)
+    }
+
     renderSeparator = () => {
         return (
-            <View
-                style={{
-                height: 0.5,
-                backgroundColor: "#CED0CE",
-                marginLeft: 15
-                }}
-            />
+            <View style={styles.listSeparator}/>
         );
     };
 
     render() {
         return (
-            <SafeAreaView>
-                <FlatList
-                    keyExtractor={this.keyExtractor}
-                    data={list}
-                    renderItem={({item}) => <ListItem title={item.title} containerStyle={{ borderBottomWidth: 0 }}></ListItem>}
-                    ItemSeparatorComponent={this.renderSeparator}
-                />
-            </SafeAreaView>
+            <FlatList
+                keyExtractor={this.keyExtractor}
+                data={list}
+                renderItem={({item}) => <ListItem title={item.title} containerStyle={styles.listItem} onPress={() => this.goToSetting(item.title)} />}
+                ItemSeparatorComponent={this.renderSeparator}
+            />
         );
     }
 }
-
-const styles = StyleSheet.create({
-    
-});
   
 export default Settings;
