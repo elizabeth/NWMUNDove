@@ -5,6 +5,17 @@ import { Text, View } from 'react-native';
 import { Calendar, Agenda, calendarTheme } from 'react-native-calendars';
 import styles from '../Style'
 
+const scheduleData = {
+    "2018-11-17": [
+        {"name": "first item"},
+        {"name": "first second"},
+    ],
+    "2018-11-18": [
+        {"name": "second item"},
+        {"name": "second second"}
+    ]
+};
+
 class Schedule extends Component {
         constructor(props) {
           super(props);
@@ -29,7 +40,7 @@ class Schedule extends Component {
                 minDate={'2018-11-15'}
                 // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
                 maxDate={'2018-11-20'}
-                  // Max amount of months allowed to scroll to the past. Default = 50
+                // Max amount of months allowed to scroll to the past. Default = 50
                 pastScrollRange={0}
                 // Max amount of months allowed to scroll to the future. Default = 50
                 futureScrollRange={0}
@@ -53,66 +64,60 @@ class Schedule extends Component {
         }
       
         loadItems(day) {
-          setTimeout(() => {
-            for (let i = 0; i < 4; i++) {
-              const time = day.timestamp + i * 24 * 60 * 60 * 1000;
-              const strTime = this.timeToString(time);
-              if (!this.state.items[strTime]) {
-                this.state.items[strTime] = [];
-                const numItems = Math.floor(Math.random() * 5);
-                for (let j = 0; j < numItems; j++) {
-                  this.state.items[strTime].push({
-                    name: 'Item for ' + strTime,
-                    height: Math.max(50, Math.floor(Math.random() * 150))
-                  });
-                }
-              }
-            }
-            //console.log(this.state.items);
-            const newItems = {};
-            Object.keys(this.state.items).forEach(key => {newItems[key] = this.state.items[key];});
-            this.setState({
-              items: newItems
-            });
-          }, 1000);
-          // console.log(`Load Items for ${day.year}-${day.month}`);
+            setTimeout(() => {
+
+                const time = day.timestamp + 0 * 24 * 60 * 60 * 1000;
+                const strTime = this.timeToString(time);
+
+                var items = scheduleData[strTime] || [];
+                // for (let j = 0; j < 2; j++) {
+                //     items.push({
+                //         name: 'Item for ' + strTime,
+                //         height: Math.max(50, Math.floor(Math.random() * 150))
+                //     });
+                // }
+
+                this.setState({
+                    items: {[strTime]: items}
+                });
+            }, 1000);
         }
       
         renderItem(item) {
-          return (
-            <View style={[calendarStyles.item, {height: item.height}]}><Text>{item.name}</Text></View>
-          );
+            return (
+                <View style={[calendarStyles.item]}><Text>{item.name}</Text></View>
+            );
         }
       
         renderEmptyDate() {
-          return (
-            <View style={calendarStyles.emptyDate}><Text>This is empty date!</Text></View>
-          );
+            return (
+                <View style={calendarStyles.emptyDate}><Text>No events scheduled</Text></View>
+            );
         }
       
         rowHasChanged(r1, r2) {
-          return r1.name !== r2.name;
+            return r1.name !== r2.name;
         }
       
         timeToString(time) {
-          const date = new Date(time);
-          return date.toISOString().split('T')[0];
+            const date = new Date(time);
+            return date.toISOString().split('T')[0];
         }
       }
       
       const calendarStyles = StyleSheet.create({
         item: {
-          backgroundColor: 'white',
-          flex: 1,
-          borderRadius: 5,
-          padding: 10,
-          marginRight: 10,
-          marginTop: 17
+            backgroundColor: 'white',
+            flex: 1,
+            borderRadius: 5,
+            padding: 10,
+            marginRight: 10,
+            marginTop: 17
         },
         emptyDate: {
-          height: 15,
-          flex:1,
-          paddingTop: 30
+            height: 15,
+            flex:1,
+            paddingTop: 30
         }
       });
   
