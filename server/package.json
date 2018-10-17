@@ -1,0 +1,29 @@
+{
+  "name": "nwmun-dove-server",
+  "version": "1.0.0",
+  "description": "Server API for NWMUN-Dove",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha 'tests/**/*'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elizabeth/NWMUNDove.git"
+  },
+  "author": "NWMUN Dept of Technical Innovations",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elizabeth/NWMUNDove/issues"
+  },
+  "homepage": "https://github.com/elizabeth/NWMUNDove#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "google-auth-library": "^2.0.0",
+    "googleapis": "^34.0.0",
+    "mocha": "^5.2.0",
+    "q": "^1.5.1",
+    "socket.io": "^2.1.1"
+  }
+}
