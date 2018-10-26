@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import styles from '../../Style'
 
-class About extends Component {
+class NWMUN extends Component {
     render() {
         return (
             <View style={styles.container}>
@@ -12,4 +12,4 @@ class About extends Component {
     }
 }
   
-export default About;
+export default NWMUN;

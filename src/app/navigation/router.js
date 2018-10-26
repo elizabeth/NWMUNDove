@@ -6,9 +6,9 @@ import { Icon } from 'react-native-elements';
 
 import Home from '../screens/Home';
 import Schedule from '../screens/Schedule';
-import Settings from '../screens/Settings'
-import About from "../screens/Settings/About";
-import Contact from "../screens/Settings/Contact";
+import About from '../screens/About'
+import NWMUN from "../screens/About/NWMUN";
+import Contact from "../screens/About/Contact";
 
 export const HomeStack = StackNavigator({
     Home: {
@@ -44,17 +44,17 @@ export const ScheduleStack = StackNavigator({
     }
 })
 
-export const SettingsStack = StackNavigator({
-    Settings: {
-        screen: Settings,
-        navigationOptions: {
-            title: 'Settings',
-        }
-    },
+export const AboutStack = StackNavigator({
     About: {
         screen: About,
         navigationOptions: {
             title: 'About',
+        }
+    },
+    NWMUN: {
+        screen: NWMUN,
+        navigationOptions: {
+            title: 'NWMUN',
         },
     },
     Contact: {
@@ -102,11 +102,11 @@ export const Tabs = Platform.select({
                 tabBarIcon: ({ tintColor }) => <Icon name="date-range" size={30} color={tintColor} />
             }
         },
-        Settings: {
-            screen: SettingsStack,
+        About: {
+            screen: AboutStack,
             navigationOptions: {
-                tabBarLabel: 'Settings',
-                tabBarIcon: ({ tintColor }) => <Icon name="settings" size={30} color={tintColor} />
+                tabBarLabel: 'About',
+                tabBarIcon: ({ tintColor }) => <Icon name="info" size={30} color={tintColor} />
             },
         }
     }, {
@@ -129,12 +129,11 @@ export const Tabs = Platform.select({
                 tabBarIcon: ({ tintColor }) => <Icon name="date-range" color={tintColor} />
             }        
         },
-        //TODO: Move settings
-        Settings: {
-            screen: SettingsStack,
+        About: {
+            screen: AboutStack,
             navigationOptions: {
-                tabBarLabel: 'Settings',
-                tabBarIcon: ({ tintColor }) => <Icon name="settings" color={tintColor} />
+                tabBarLabel: 'About',
+                tabBarIcon: ({ tintColor }) => <Icon name="info" color={tintColor} />
             }        
         }
     }, {
