@@ -6,14 +6,14 @@ import styles from '../Style'
 
 const list = [
     {
-        title: 'About'
+        title: 'NWMUN'
     },
     {
         title: 'Contact'
     }
 ]
 
-class Settings extends Component {
+class About extends Component {
     keyExtractor = (item, index) => item.title
 
     goToSetting = (screen) => {
@@ -38,4 +38,4 @@ class Settings extends Component {
     }
 }
   
-export default Settings;
+export default About;
